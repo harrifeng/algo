@@ -6,24 +6,6 @@ def merge_sort(arr, beg, end):
     return
 
 
-def merge(l1, l2):
-    ret = []
-    i = 0
-    j = 0
-    while i < len(l1) and j < len(l2):
-        if l1[i] < l2[j]:
-            ret.append(l1[i])
-            i += 1
-        else:
-            ret.append(l2[j])
-            j += 1
-    if i < len(l1):
-        ret += l1[i:]
-    if j < len(l2):
-        ret += l2[j:]
-    return ret
-
-
 def part(arr, beg, end):
     target = arr[end]
     pre = beg - 1
@@ -43,7 +25,5 @@ if __name__ == "__main__":
     ret = part(l3, 0, len(l3) - 1)
     print(ret, l3)
 
-    print(merge([1, 3, 5], [2, 4, 15]))
-    ret = merge_sort(l3, 0, len(l3) - 1)
-    print(ret)
+    merge_sort(l3, 0, len(l3) - 1)
     print(l3)
