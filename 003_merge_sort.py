@@ -9,25 +9,32 @@ def merge_sort(arr, beg, end):
 
 
 def merge(arr, start1, start2, end):
-    pre = start1 - 1
-    i = start1
-    j = start2
+    l1 = arr[start1:start2][:]
+    l2 = arr[start2:end][:]
 
-    while pre < end and i < end and j < end:
-        if arr[i] < arr[j]:
-            pre += 1
-            arr[pre], arr[i] = arr[i], arr[pre]
-            i = pre + 1
+    i = 0
+    j = 0
+    while i < len(l1) and j < len(l2):
+        if l1[i] < l2[j]:
+            arr[i + j] = l1[i]
+            i += 1
         else:
-            pre += 1
-            arr[pre], arr[j] = arr[j], arr[pre]
-            i = max(pre + 1, j)
+            arr[i + j] = l2[j]
             j += 1
+    while i < len(l1):
+        arr[i + j] = l1[i]
+        i += 1
+    while j < len(l2):
+        arr[i + j] = l2[j]
+        j += 1
     return
 
 
 if __name__ == "__main__":
 
+    ll = [1, 3, 5, 2, 4, 6, 8]
+    merge(ll, 0, 3, 6)
+    print(ll)
     l3 = [2, 8, 7, 1, 3, 5, 6, 4]
     merge_sort(l3, 0, 7)
     print(l3)
